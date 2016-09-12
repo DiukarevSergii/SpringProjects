@@ -14,8 +14,7 @@
         Photo: <input type="file" name="photo">
         <input type="submit"/>
     </form>
-
-    <input type="submit" value="View All Photos" onclick="window.location='/viewAll';"/>
+    <input type="submit" value="View All" onclick="window.location='/allView';">
 </div>
 </body>
 </html>

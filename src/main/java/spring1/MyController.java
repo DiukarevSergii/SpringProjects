@@ -44,12 +44,25 @@ public class MyController {
         }
     }
 
-    @RequestMapping(value = "/viewAll")
-    public ModelAndView onViewAll(ModelAndView modelAndView){
+    @RequestMapping(value = "/allView")
+    public ModelAndView onAllView(ModelAndView modelAndView){
         modelAndView.setViewName("viewAll");
-        modelAndView.addObject("fromList");
-        modelAndView.addObject("idPhoto", photos.keySet());
+        modelAndView.addObject("fromList", "1");
+        modelAndView.addObject("idKey", photos.keySet());
         return modelAndView;
+    }
+
+    @RequestMapping(value = "/deleteChecked", method = RequestMethod.POST)
+    public String onDelete(@RequestParam(value = "photo_id_for_delete", required = false) long[]id){
+        if (id == null){
+            throw new PhotoNotFoundException();
+        }
+        for (long photo_id: id){
+            if (photos.remove(photo_id) == null){
+                throw new PhotoErrorException();
+            }
+        }
+        return "index";
     }
 
     @RequestMapping("/photo/{photo_id}")

@@ -8,13 +8,17 @@
 <div align="center">
     <h1>Your photos: </h1>
     <h1>The list of all photos</h1>
-    <c:if test="${fromList ne 0}">
-        <c:forEach items="${idPhoto}" var="id">
-            <br/>Id: ${id}
-            <br/><img src="/photo/${id}">
-        </c:forEach>
+    <c:if test="${fromList eq 1}">
+        <c:if test="${not empty idKey}">
+            <form action="/deleteChecked" method="post">
+            <c:forEach items="${idKey}" var="id">
+                <br/><input type="checkbox" name="photo_id_for_delete" value="${id}">Id: ${id}
+                <br/><img src="/photo/${id}">
+            </c:forEach>
+            <br/><input type="submit" value="Delete selected" sizes="100px"/>
+        </c:if>
+        </form>
     </c:if>
-
 </div>
 </body>
 </html>
