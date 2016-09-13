@@ -13,9 +13,9 @@
             <form action="/deleteChecked" method="post">
             <c:forEach items="${idKey}" var="id">
                 <br/><input type="checkbox" name="photo_id_for_delete" value="${id}">Id: ${id}
-                <br/><img src="/photo/${id}">
+                <br/><img src="/photo/${id}" width="500px">
             </c:forEach>
-            <br/><input type="submit" value="Delete selected" sizes="100px"/>
+            <br/><input type="submit" value="Delete selected"/>
         </c:if>
         </form>
     </c:if>
